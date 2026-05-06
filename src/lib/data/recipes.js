@@ -1,0 +1,373 @@
+export const recipes = [
+  {
+    id: 1, name: 'Avena con yogur y fruta', type: 'breakfast',
+    kcal: 310, protein: 18, carbs: 42, fat: 6, tags: ['rápido'],
+    ingredients: [
+      { name: 'Avena', amount: '6 cdas (60g)' },
+      { name: 'Yogur Ser Pro', amount: '1 pote' },
+      { name: 'Banana o fruta', amount: '1 unidad' },
+    ],
+    steps: [
+      'Mezclar la avena con el yogur en un bowl.',
+      'Cortar la fruta en trozos encima.',
+      'Agregar canela o semillas si se desea. Listo en 2 minutos.',
+    ],
+  },
+  {
+    id: 2, name: 'Tostadas con ricotta y fruta', type: 'breakfast',
+    kcal: 280, protein: 16, carbs: 34, fat: 7, tags: [],
+    ingredients: [
+      { name: 'Pan de molde integral', amount: '2 rodajas' },
+      { name: 'Ricotta magra', amount: '3 cdas' },
+      { name: 'Fruta', amount: '1 unidad' },
+    ],
+    steps: [
+      'Tostar el pan.',
+      'Esparcir la ricotta.',
+      'Acompañar con fruta fresca al costado.',
+    ],
+  },
+  {
+    id: 3, name: 'Pancake de avena y banana', type: 'breakfast',
+    kcal: 300, protein: 17, carbs: 36, fat: 8, tags: ['sin TACC'],
+    ingredients: [
+      { name: 'Avena', amount: '6 cdas' },
+      { name: 'Huevos', amount: '2 u' },
+      { name: 'Banana', amount: '1 u' },
+      { name: 'Canela', amount: 'a gusto' },
+    ],
+    steps: [
+      'Pisar la banana con tenedor.',
+      'Mezclar con huevos y avena hasta formar pasta.',
+      'Cocinar de a cucharadas en sartén antiadherente, 2 min por lado.',
+    ],
+  },
+  {
+    id: 4, name: 'Tostadas francesas con fruta', type: 'breakfast',
+    kcal: 290, protein: 15, carbs: 32, fat: 9, tags: [],
+    ingredients: [
+      { name: 'Pan integral', amount: '2 rodajas' },
+      { name: 'Huevos', amount: '2 u' },
+      { name: 'Leche descremada', amount: 'chorrito' },
+      { name: 'Fruta', amount: '1 u' },
+    ],
+    steps: [
+      'Batir huevos con leche y canela.',
+      'Remojar el pan en la mezcla.',
+      'Dorar en sartén sin aceite. Acompañar con fruta.',
+    ],
+  },
+  {
+    id: 5, name: 'Yogur con granola y fruta', type: 'breakfast',
+    kcal: 320, protein: 20, carbs: 38, fat: 7, tags: ['rápido'],
+    ingredients: [
+      { name: 'Yogur Ser Pro', amount: '1 pote' },
+      { name: 'Granola', amount: '5 cdas' },
+      { name: 'Fruta', amount: '1 u' },
+    ],
+    steps: [
+      'Volcar el yogur en un bowl.',
+      'Agregar granola y fruta cortada encima.',
+      'Consumir inmediatamente.',
+    ],
+  },
+  {
+    id: 6, name: 'Licuado de fruta con avena', type: 'breakfast',
+    kcal: 270, protein: 14, carbs: 38, fat: 4, tags: ['rápido'],
+    ingredients: [
+      { name: 'Leche descremada', amount: '200ml' },
+      { name: 'Fruta variada', amount: '1 taza' },
+      { name: 'Avena', amount: '3 cdas' },
+    ],
+    steps: [
+      'Licuar todos los ingredientes.',
+      'Servir frío. Se puede agregar canela o esencia de vainilla.',
+    ],
+  },
+  {
+    id: 7, name: 'Ensalada de lentejas con huevo', type: 'lunch',
+    kcal: 390, protein: 28, carbs: 40, fat: 10, tags: ['sin TACC'],
+    ingredients: [
+      { name: 'Lentejas', amount: '120g cocidas' },
+      { name: 'Huevos', amount: '2 u' },
+      { name: 'Tomate', amount: '1 u' },
+      { name: 'Aceite de oliva', amount: '1 cda' },
+    ],
+    steps: [
+      'Hervir los huevos 8 min, pelar y cortar.',
+      'Mezclar lentejas con tomate en cubos.',
+      'Agregar huevos, condimentar con aceite de oliva y limón.',
+    ],
+  },
+  {
+    id: 8, name: 'Arroz integral con atún y vegetales', type: 'lunch',
+    kcal: 400, protein: 32, carbs: 44, fat: 8, tags: ['rápido'],
+    ingredients: [
+      { name: 'Arroz integral', amount: '50g crudo' },
+      { name: 'Atún al natural', amount: '1 lata (80g)' },
+      { name: 'Tomate cherry', amount: '½ taza' },
+      { name: 'Aceite de oliva', amount: '1 cda' },
+    ],
+    steps: [
+      'Cocinar arroz integral (20 min).',
+      'Escurrir atún, mezclar con arroz y tomate.',
+      'Condimentar con aceite, limón y perejil.',
+    ],
+  },
+  {
+    id: 9, name: 'Milanesa de soja con puré de arvejas', type: 'lunch',
+    kcal: 420, protein: 26, carbs: 48, fat: 11, tags: [],
+    ingredients: [
+      { name: 'Soja texturizada', amount: '80g' },
+      { name: 'Arvejas', amount: '120g cocidas' },
+      { name: 'Huevo', amount: '1 u' },
+      { name: 'Pan rallado integral', amount: '2 cdas' },
+    ],
+    steps: [
+      'Hidratar soja en agua caliente 10 min, escurrir y condimentar.',
+      'Pasar por huevo y pan rallado.',
+      'Dorar en sartén con mínimo aceite. Hacer puré con arvejas.',
+    ],
+  },
+  {
+    id: 10, name: 'Salmón a la plancha con arroz', type: 'lunch',
+    kcal: 440, protein: 38, carbs: 40, fat: 14, tags: ['sin TACC'],
+    ingredients: [
+      { name: 'Salmón', amount: '150g' },
+      { name: 'Arroz integral', amount: '50g crudo' },
+      { name: 'Espinaca', amount: '1 taza' },
+      { name: 'Aceite de oliva', amount: '1 cda' },
+      { name: 'Ajo y limón', amount: 'a gusto' },
+    ],
+    steps: [
+      'Marinar salmón con ajo y limón 10 min.',
+      'Cocinar 3 min por lado en sartén caliente.',
+      'Saltear espinaca con ajo. Servir con arroz.',
+    ],
+  },
+  {
+    id: 11, name: 'Merluza al horno con vegetales', type: 'lunch',
+    kcal: 310, protein: 32, carbs: 28, fat: 7, tags: ['sin TACC'],
+    ingredients: [
+      { name: 'Merluza', amount: '150g' },
+      { name: 'Papa chica', amount: '1 u' },
+      { name: 'Zucchini y morrón', amount: '1 taza' },
+      { name: 'Aceite de oliva', amount: '1 cda' },
+    ],
+    steps: [
+      'Disponer filete en fuente. Rodear con vegetales en cubos.',
+      'Rociar con aceite, ajo, orégano y pimentón.',
+      'Hornear 25 min a 200°C tapado con papel aluminio.',
+    ],
+  },
+  {
+    id: 12, name: 'Omelette con queso y espinaca', type: 'lunch',
+    kcal: 330, protein: 24, carbs: 8, fat: 22, tags: ['rápido', 'bajo HC'],
+    ingredients: [
+      { name: 'Huevos', amount: '3 u' },
+      { name: 'Espinaca', amount: '1 taza' },
+      { name: 'Queso port salut light', amount: '30g' },
+    ],
+    steps: [
+      'Batir huevos, sal y pimienta.',
+      'Verter en sartén caliente, agregar espinaca cruda y queso.',
+      'Doblar a la mitad cuando cuaje. Listo en 5 min.',
+    ],
+  },
+  {
+    id: 13, name: 'Hamburguesa de lentejas', type: 'lunch',
+    kcal: 380, protein: 22, carbs: 44, fat: 10, tags: [],
+    ingredients: [
+      { name: 'Lentejas cocidas', amount: '120g' },
+      { name: 'Huevo', amount: '1 u' },
+      { name: 'Cebolla', amount: '½ u' },
+      { name: 'Avena', amount: '2 cdas' },
+      { name: 'Queso port salut', amount: '30g' },
+    ],
+    steps: [
+      'Pisar lentejas con tenedor. Mezclar con huevo, avena y cebolla rallada.',
+      'Formar medallones. Cocinar 4 min por lado.',
+      'Servir con queso derretido encima y ensalada.',
+    ],
+  },
+  {
+    id: 14, name: 'Ensalada de garbanzos con sardinas', type: 'lunch',
+    kcal: 340, protein: 32, carbs: 30, fat: 11, tags: ['rápido', 'sin TACC'],
+    ingredients: [
+      { name: 'Garbanzos', amount: '120g cocidos' },
+      { name: 'Sardinas al natural', amount: '1 lata' },
+      { name: 'Huevo duro', amount: '1 u' },
+      { name: 'Rúcula y tomate', amount: '1 taza' },
+    ],
+    steps: [
+      'Mezclar garbanzos con rúcula, tomate cherry y huevo cortado.',
+      'Agregar sardinas escurridas encima.',
+      'Condimentar con aceite de oliva y limón.',
+    ],
+  },
+  {
+    id: 15, name: 'Milanesa de berenjena con queso', type: 'lunch',
+    kcal: 360, protein: 18, carbs: 34, fat: 14, tags: [],
+    ingredients: [
+      { name: 'Berenjena', amount: '1 u grande' },
+      { name: 'Huevo', amount: '1 u' },
+      { name: 'Pan rallado integral', amount: '3 cdas' },
+      { name: 'Queso port salut light', amount: '40g' },
+    ],
+    steps: [
+      'Cortar berenjena en rodajas, salar 15 min y secar.',
+      'Pasar por huevo y pan rallado. Hornear 15 min a 200°C.',
+      'Colocar queso encima y gratinar 5 min más.',
+    ],
+  },
+  {
+    id: 16, name: 'Fideos integrales con atún', type: 'lunch',
+    kcal: 420, protein: 30, carbs: 50, fat: 8, tags: [],
+    ingredients: [
+      { name: 'Fideos integrales', amount: '50g crudo' },
+      { name: 'Atún al natural', amount: '1 lata' },
+      { name: 'Tomate natural triturado', amount: '½ taza' },
+      { name: 'Ajo', amount: '1 diente' },
+    ],
+    steps: [
+      'Cocinar fideos al dente.',
+      'Sofreír ajo, agregar tomate y cocinar 5 min.',
+      'Incorporar atún escurrido, mezclar con pasta.',
+    ],
+  },
+  {
+    id: 17, name: 'Tortilla de espinaca y queso', type: 'lunch',
+    kcal: 320, protein: 22, carbs: 10, fat: 20, tags: ['sin TACC', 'bajo HC'],
+    ingredients: [
+      { name: 'Huevos', amount: '3 u' },
+      { name: 'Espinaca', amount: '1 taza' },
+      { name: 'Queso port salut light', amount: '40g' },
+      { name: 'Cebolla', amount: '½ u' },
+    ],
+    steps: [
+      'Saltear cebolla y espinaca 3 min.',
+      'Batir huevos, verter sobre vegetales en sartén.',
+      'Cocinar tapado 5 min a fuego bajo. Dar vuelta.',
+    ],
+  },
+  {
+    id: 18, name: 'Zapallitos rellenos con atún', type: 'lunch',
+    kcal: 290, protein: 28, carbs: 22, fat: 10, tags: ['sin TACC'],
+    ingredients: [
+      { name: 'Zapallitos', amount: '2 u' },
+      { name: 'Atún al natural', amount: '1 lata' },
+      { name: 'Ricotta magra', amount: '2 cdas' },
+      { name: 'Queso port salut', amount: '30g' },
+    ],
+    steps: [
+      'Vaciar zapallitos. Mezclar pulpa con atún y ricotta.',
+      'Rellenar y cubrir con queso.',
+      'Hornear 20 min a 180°C.',
+    ],
+  },
+  {
+    id: 19, name: 'Pastel de papa con atún', type: 'lunch',
+    kcal: 350, protein: 30, carbs: 36, fat: 9, tags: [],
+    ingredients: [
+      { name: 'Papa', amount: '200g' },
+      { name: 'Atún al natural', amount: '1 lata' },
+      { name: 'Huevo', amount: '1 u' },
+      { name: 'Queso port salut', amount: '30g' },
+    ],
+    steps: [
+      'Hacer puré sin manteca.',
+      'Mezclar atún con huevo y cebolla salteada.',
+      'Capas en fuente: puré → atún → puré → queso. Gratinar 15 min.',
+    ],
+  },
+  {
+    id: 20, name: 'Tarta de espinaca y ricotta', type: 'lunch',
+    kcal: 370, protein: 22, carbs: 32, fat: 16, tags: [],
+    ingredients: [
+      { name: 'Masa integral', amount: '1 tapa' },
+      { name: 'Espinaca', amount: '2 tazas' },
+      { name: 'Huevos', amount: '3 u' },
+      { name: 'Ricotta magra', amount: '150g' },
+    ],
+    steps: [
+      'Blanquear espinaca. Mezclar con huevos y ricotta, sal y nuez moscada.',
+      'Forrar molde con masa. Volcar relleno.',
+      'Hornear 35 min a 180°C.',
+    ],
+  },
+  {
+    id: 21, name: 'Pastel de soja texturizada', type: 'lunch',
+    kcal: 380, protein: 24, carbs: 46, fat: 10, tags: [],
+    ingredients: [
+      { name: 'Papa', amount: '200g' },
+      { name: 'Soja texturizada', amount: '60g' },
+      { name: 'Tomate y cebolla', amount: '1 taza' },
+      { name: 'Queso port salut', amount: '30g' },
+    ],
+    steps: [
+      'Hidratar soja. Sofreír con cebolla y tomate.',
+      'Hacer puré de papa sin manteca.',
+      'Armar capas en fuente y gratinar.',
+    ],
+  },
+  {
+    id: 22, name: 'Pizza casera con atún', type: 'lunch',
+    kcal: 390, protein: 29, carbs: 45, fat: 10, tags: [],
+    ingredients: [
+      { name: 'Pan árabe integral', amount: '1 u' },
+      { name: 'Atún al natural', amount: '1 lata' },
+      { name: 'Tomate triturado', amount: '½ taza' },
+      { name: 'Mozzarella light', amount: '40g' },
+    ],
+    steps: [
+      'Cubrir pan árabe con tomate natural.',
+      'Distribuir atún escurrido y mozzarella.',
+      'Hornear 12 min a 220°C.',
+    ],
+  },
+  {
+    id: 23, name: 'Soufflé de vegetales', type: 'lunch',
+    kcal: 280, protein: 18, carbs: 20, fat: 14, tags: ['sin TACC'],
+    ingredients: [
+      { name: 'Huevos', amount: '3 u' },
+      { name: 'Zapallito y morrón', amount: '1 taza' },
+      { name: 'Queso port salut', amount: '30g' },
+      { name: 'Leche descremada', amount: '50ml' },
+    ],
+    steps: [
+      'Saltear vegetales. Mezclar con yemas, queso y leche.',
+      'Batir claras a nieve e incorporar con movimientos envolventes.',
+      'Hornear en molde 25 min a 180°C sin abrir.',
+    ],
+  },
+  {
+    id: 24, name: 'Salmón al horno con batata', type: 'lunch',
+    kcal: 400, protein: 36, carbs: 32, fat: 13, tags: ['sin TACC'],
+    ingredients: [
+      { name: 'Salmón', amount: '150g' },
+      { name: 'Batata', amount: '150g' },
+      { name: 'Espinaca', amount: '1 taza' },
+      { name: 'Ajo y limón', amount: 'a gusto' },
+    ],
+    steps: [
+      'Precalentar a 200°C.',
+      'Disponer salmón con batata en rodajas. Condimentar.',
+      'Hornear 22 min. Saltear espinaca aparte.',
+    ],
+  },
+  {
+    id: 25, name: 'Ensalada completa de atún', type: 'lunch',
+    kcal: 320, protein: 30, carbs: 22, fat: 10, tags: ['rápido', 'sin TACC'],
+    ingredients: [
+      { name: 'Atún al natural', amount: '1 lata' },
+      { name: 'Huevo duro', amount: '1 u' },
+      { name: 'Lentejas cocidas', amount: '80g' },
+      { name: 'Rúcula y tomate', amount: '1 taza' },
+    ],
+    steps: [
+      'Mezclar rúcula, tomate y lentejas.',
+      'Agregar atún escurrido y huevo en cuartos.',
+      'Condimentar con aceite de oliva y limón.',
+    ],
+  },
+];
