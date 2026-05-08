@@ -1,0 +1,203 @@
+{
+  "name": "TikTok Recipe Bot 🍽️",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": ["message"],
+        "additionalFields": {}
+      },
+      "id": "node-telegram-trigger",
+      "name": "Telegram Trigger",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 300],
+      "webhookId": "tiktok-recipe-bot"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.message.text }}",
+              "operation": "contains",
+              "value2": "tiktok.com"
+            }
+          ]
+        }
+      },
+      "id": "node-if-tiktok",
+      "name": "¿Es TikTok?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "👋 Mandame el link de un TikTok de cocina y extraigo la receta al toque.",
+        "additionalFields": {}
+      },
+      "id": "node-ask-url",
+      "name": "Pedir URL",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [480, 420]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "⏳ Analizando el video de TikTok...",
+        "additionalFields": {}
+      },
+      "id": "node-processing",
+      "name": "Procesando",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [480, 180]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://api.supadata.ai/v1/tiktok/transcript",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "={{ $env.SUPADATA_API_KEY }}"
+            }
+          ]
+        },
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "url",
+              "value": "={{ $('Telegram Trigger').item.json.message.text.trim() }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "node-supadata",
+      "name": "Supadata: Transcribir",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [720, 180]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build the Claude API request body\nconst data = $input.first().json;\n// Supadata returns { content: [{text, offset, duration}] } or { text: '...' }\nconst transcript = data.text\n  || (Array.isArray(data.content) ? data.content.map(s => s.text).join(' ') : null)\n  || data.transcript\n  || null;\nconst chatId = $('Telegram Trigger').item.json.message.chat.id;\n\nif (!transcript) {\n  throw new Error('No se pudo obtener el transcript del video. Probá con otro link.');\n}\n\nconst systemPrompt = `Sos un extractor de recetas. A partir de la transcripción de un video de cocina, extraé la receta en este formato JSON exacto:\n{\n  \"name\": \"nombre de la receta\",\n  \"type\": \"breakfast\" o \"lunch\",\n  \"kcal\": número (calorías estimadas),\n  \"protein\": número (gramos de proteína),\n  \"carbs\": número (gramos de hidratos),\n  \"fat\": número (gramos de grasa),\n  \"tags\": [\"rápido\", \"sin TACC\", \"bajo HC\" — solo los que apliquen],\n  \"ingredients\": [{\"name\": \"ingrediente\", \"amount\": \"cantidad\"}],\n  \"steps\": [\"paso 1\", \"paso 2\"]\n}\nUsa \"breakfast\" para desayunos y meriendas, \"lunch\" para almuerzos y cenas.\nEstimá los macros si no están explícitos en el video.\nRespondé ÚNICAMENTE con el JSON, sin texto adicional ni bloques de código markdown.`;\n\nconst requestBody = {\n  model: 'claude-haiku-4-5-20251001',\n  max_tokens: 1024,\n  system: systemPrompt,\n  messages: [\n    {\n      role: 'user',\n      content: `Transcripción del video de TikTok:\\n\\n${transcript}`\n    }\n  ]\n};\n\nreturn [{ json: { requestBody, chatId } }];"
+      },
+      "id": "node-build-request",
+      "name": "Armar request Claude",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [960, 180]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "={{ $env.ANTHROPIC_API_KEY }}"
+            },
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.requestBody) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "node-claude",
+      "name": "Claude: Extraer Receta",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1200, 180]
+    },
+    {
+      "parameters": {
+        "jsCode": "const claudeResponse = $input.first().json;\nconst chatId = $('Armar request Claude').item.json.chatId;\nconst rawText = claudeResponse.content?.[0]?.text || '';\n\n// Parse recipe JSON (handle markdown code blocks just in case)\nlet recipe;\ntry {\n  recipe = JSON.parse(rawText.trim());\n} catch {\n  const match = rawText.match(/```(?:json)?\\n?([\\s\\S]*?)\\n?```/);\n  if (match) {\n    recipe = JSON.parse(match[1].trim());\n  } else {\n    throw new Error('Claude no devolvió un JSON válido: ' + rawText);\n  }\n}\n\n// Format Telegram message (MarkdownV2 escaping)\nconst esc = (s) => String(s).replace(/[_*[\\]()~`>#+\\-=|{}.!]/g, '\\\\$&');\n\nconst typeLabel = recipe.type === 'breakfast' ? '🌅 Desayuno / Merienda' : '🍽️ Almuerzo / Cena';\nconst tagsText = recipe.tags?.length\n  ? `\\n🏷️ _${esc(recipe.tags.join(' · '))}_`\n  : '';\n\nconst macros = `${esc(recipe.kcal)} kcal · ${esc(recipe.protein)}g prot · ${esc(recipe.carbs)}g HC · ${esc(recipe.fat)}g lip`;\n\nconst ingredients = recipe.ingredients\n  .map(i => `  • *${esc(i.name)}*: ${esc(i.amount)}`)\n  .join('\\n');\n\nconst steps = recipe.steps\n  .map((s, i) => `  ${i + 1}\\\\. ${esc(s)}`)\n  .join('\\n');\n\nconst message = [\n  `🍳 *${esc(recipe.name)}*`,\n  `${typeLabel}${tagsText}`,\n  ``,\n  `📊 *Macros estimados*`,\n  `  ${macros}`,\n  ``,\n  `🛒 *Ingredientes*`,\n  ingredients,\n  ``,\n  `👨‍🍳 *Preparación*`,\n  steps,\n  ``,\n  `_Receta extraída por IA — revisá las cantidades\\._`\n].join('\\n');\n\nreturn [{ json: { recipe, message, chatId } }];"
+      },
+      "id": "node-format",
+      "name": "Formatear Receta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1440, 180]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.chatId }}",
+        "text": "={{ $json.message }}",
+        "additionalFields": {
+          "parse_mode": "MarkdownV2"
+        }
+      },
+      "id": "node-send-recipe",
+      "name": "Enviar Receta",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1680, 180]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [{ "node": "¿Es TikTok?", "type": "main", "index": 0 }]
+      ]
+    },
+    "¿Es TikTok?": {
+      "main": [
+        [{ "node": "Procesando", "type": "main", "index": 0 }],
+        [{ "node": "Pedir URL", "type": "main", "index": 0 }]
+      ]
+    },
+    "Procesando": {
+      "main": [
+        [{ "node": "Supadata: Transcribir", "type": "main", "index": 0 }]
+      ]
+    },
+    "Supadata: Transcribir": {
+      "main": [
+        [{ "node": "Armar request Claude", "type": "main", "index": 0 }]
+      ]
+    },
+    "Armar request Claude": {
+      "main": [
+        [{ "node": "Claude: Extraer Receta", "type": "main", "index": 0 }]
+      ]
+    },
+    "Claude: Extraer Receta": {
+      "main": [
+        [{ "node": "Formatear Receta", "type": "main", "index": 0 }]
+      ]
+    },
+    "Formatear Receta": {
+      "main": [
+        [{ "node": "Enviar Receta", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1"
+}
