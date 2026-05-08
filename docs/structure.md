@@ -2,30 +2,47 @@
 
 ```
 src/
-  components/
-    Planner/              # Main weekly planner view
-    BalancePanel/         # Sticky panel with nutritional balance bars
-    Recipes/              # Catalog, filters, search and recipe detail modal
-    ShoppingList/         # Shopping list view generated from the plan
-  data/
-    recipes.js            # Recipe catalog (see docs/data.md)
-    constants.js          # DAYS, MEALS, TARGETS
-  hooks/
-    usePlan.js            # Plan state + localStorage persistence
-    useBalance.js         # Derived calculations from plan (daily and weekly totals)
-  utils/
-    shoppingList.js       # Logic to generate grouped list from the plan
-  App.jsx
-  main.jsx
+  lib/
+    components/
+      Planner/              # Main weekly planner view
+        Planner.svelte
+        DayBlock.svelte
+        MealSlot.svelte
+      BalancePanel/         # Sticky panel with nutritional balance bars
+        BalancePanel.svelte
+        DayCard.svelte
+      Recipes/              # Catalog, filters, search and recipe detail modal
+        Recipes.svelte
+      ShoppingList/         # Shopping list view generated from the plan
+        ShoppingList.svelte
+    data/
+      recipes.js            # Recipe catalog (see docs/data.md)
+      constants.js          # DAYS, MEALS, TARGETS
+    stores/
+      plan.svelte.js        # Plan state ($state) + localStorage persistence
+    utils/
+      balance.js            # getDayTotals, getDayStatus, getDaySuggestions, getWeeklyAverage
+      shoppingList.js       # generateShoppingList — grouped list from plan
+  routes/
+    +page.svelte            # App shell: header, nav tabs, view switching
+    +layout.svelte
+    layout.css              # Global styles including .grain overlay
+n8n/
+  docker-compose.yml        # n8n local instance (port 5678)
+  .env                      # API keys — not in git
+  data/                     # n8n DB and credentials — not in git
+docs/
+  n8n/
+    tiktok-recipe-bot.json  # Importable n8n workflow
 ```
 
 ## Conventions
 
 - All code nomenclature (folders, files, variables, functions, components, props, object keys) is in English. Only visible UI text strings are in Spanish.
-- Each component lives in its own folder when it has more than one associated file (styles, sub-components, helpers).
-- Hooks start with `use`.
-- Static data goes in `src/data/`.
-- Reusable logic that is not a hook goes in `src/utils/`.
+- Each component lives in its own folder when it has more than one associated file.
+- Stores use the `.svelte.js` extension to enable Svelte runes.
+- Static data goes in `src/lib/data/`.
+- Reusable logic that is not a store goes in `src/lib/utils/`.
 
 ## Main components
 
@@ -36,7 +53,7 @@ src/
 
 ## Constants
 
-Constants in `src/data/constants.js`:
+Constants in `src/lib/data/constants.js`:
 
 - `DAYS` — the 7 days of the week
 - `MEALS` — the 4 meal slots (internal keys in English: `breakfast`, `lunch`, `snack`, `dinner`; labels shown in UI are in Spanish)
