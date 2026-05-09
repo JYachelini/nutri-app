@@ -911,5 +911,43 @@
       "Colocar el aguacate, la cebolla morada, la espinaca, el yogur, el orégano, la sal y la pimienta en una procesadora y mezclar hasta obtener una crema.",
       "En un bol grande, combinar el tomate, la lechuga, la pasta de garbanzos, el pollo cocido y la salsa especial. Agregar la crema de aguacate y mezclar todo bien."
     ]
+  },
+  {
+    "id": 27,
+    "name": "Desayuno alto en proteína y fibra",
+    "type": "breakfast",
+    "kcal": 320,
+    "protein": 25,
+    "carbs": 30,
+    "fat": 8,
+    "tags": [
+      "rápido"
+    ],
+    "ingredients": [
+      {
+        "name": "avena en hojuelas",
+        "amount": "40 g"
+      },
+      {
+        "name": "café con cacao puro",
+        "amount": "1 taza"
+      },
+      {
+        "name": "proteína sabor caramelo",
+        "amount": "1 dosis (30 g)"
+      },
+      {
+        "name": "yogur griego light",
+        "amount": "100 g"
+      },
+      {
+        "name": "creatina",
+        "amount": "5 g"
+      }
+    ],
+    "steps": [
+      "Mezclar bien la avena, el café con cacao puro, la proteína sabor caramelo y el yogur griego light.",
+      "Agregar la creatina, revolver nuevamente y refrigerar unos minutos antes de consumir."
+    ]
   }
 ]
