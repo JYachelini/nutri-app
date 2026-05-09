@@ -1,5 +1,5 @@
 <script>
-  import { recipes } from '$lib/data/recipes.js';
+  import { recipes } from '$lib/data/recipes.svelte.js';
   import { removeMeal } from '$lib/stores/plan.svelte.js';
 
   let { day, mealKey, mealLabel, recipeId, onAddClick } = $props();

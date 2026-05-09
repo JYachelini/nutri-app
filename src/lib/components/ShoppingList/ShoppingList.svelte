@@ -1,6 +1,6 @@
 <script>
   import { plan } from '$lib/stores/plan.svelte.js';
-  import { recipes } from '$lib/data/recipes.js';
+  import { recipes } from '$lib/data/recipes.svelte.js';
   import { generateShoppingList } from '$lib/utils/shoppingList.js';
 
   const grouped = $derived(generateShoppingList(plan, recipes));

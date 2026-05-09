@@ -1,7 +1,7 @@
 <script>
   import { DAYS, TARGETS } from '$lib/data/constants.js';
   import { plan } from '$lib/stores/plan.svelte.js';
-  import { recipes } from '$lib/data/recipes.js';
+  import { recipes } from '$lib/data/recipes.svelte.js';
   import { getDayTotals, getWeeklyAverage } from '$lib/utils/balance.js';
   import DayCard from './DayCard.svelte';
 

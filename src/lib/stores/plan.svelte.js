@@ -1,5 +1,5 @@
 import { DAYS, MEALS } from '$lib/data/constants.js';
-import { recipes } from '$lib/data/recipes.js';
+import { recipes } from '$lib/data/recipes.svelte.js';
 
 const STORAGE_KEY = 'nutri-plan';
 

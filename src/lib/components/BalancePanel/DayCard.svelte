@@ -1,6 +1,6 @@
 <script>
   import { plan } from '$lib/stores/plan.svelte.js';
-  import { recipes } from '$lib/data/recipes.js';
+  import { recipes } from '$lib/data/recipes.svelte.js';
   import { TARGETS } from '$lib/data/constants.js';
   import { getDayTotals, getDayStatus, getDaySuggestions } from '$lib/utils/balance.js';
 

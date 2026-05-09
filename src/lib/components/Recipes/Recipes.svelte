@@ -1,5 +1,5 @@
 <script>
-  import { recipes } from '$lib/data/recipes.js';
+  import { recipes } from '$lib/data/recipes.svelte.js';
   import RecipeCard from './RecipeCard.svelte';
   import RecipeModal from './RecipeModal.svelte';
 

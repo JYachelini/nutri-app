@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx sv *)"
+      "Bash(npx sv *)",
+      "Bash(docker compose *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5678)"
     ]
   }
 }

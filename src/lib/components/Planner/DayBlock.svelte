@@ -1,5 +1,5 @@
 <script>
-  import { recipes } from '$lib/data/recipes.js';
+  import { recipes } from '$lib/data/recipes.svelte.js';
   import { plan } from '$lib/stores/plan.svelte.js';
   import { MEALS } from '$lib/data/constants.js';
   import { getDayTotals } from '$lib/utils/balance.js';
