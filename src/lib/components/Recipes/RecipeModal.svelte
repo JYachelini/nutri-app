@@ -4,12 +4,12 @@
 
 <!-- Overlay -->
 <div
-  class="fixed inset-0 bg-ink/50 backdrop-blur-sm z-50 flex items-end justify-center"
+  class="fixed inset-0 bg-ink/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
   onclick={e => { if (e.target === e.currentTarget) onClose(); }}
   role="dialog"
   aria-modal="true"
 >
-  <div class="bg-warm-white rounded-t-[20px] w-full max-w-[900px] max-h-[80vh] overflow-y-auto p-7 pb-10 animate-[slideUp_0.25s_ease]">
+  <div class="bg-warm-white rounded-[20px] w-full max-w-[900px] max-h-[80vh] overflow-y-auto p-7 pb-10 animate-[slideUp_0.25s_ease]">
     <div class="flex justify-between items-start mb-5">
       <div>
         <h2 class="font-serif text-2xl font-semibold">{recipe.name}</h2>
