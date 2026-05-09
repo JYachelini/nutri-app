@@ -949,5 +949,45 @@
       "Mezclar bien la avena, el café con cacao puro, la proteína sabor caramelo y el yogur griego light.",
       "Agregar la creatina, revolver nuevamente y refrigerar unos minutos antes de consumir."
     ]
+  },
+  {
+    "id": 28,
+    "name": "Falsa Chocolate Blanco con Frutas",
+    "type": "breakfast",
+    "kcal": 180,
+    "protein": 12,
+    "carbs": 25,
+    "fat": 4,
+    "tags": [
+      "rápido",
+      "bajo HC"
+    ],
+    "ingredients": [
+      {
+        "name": "leche en polvo desnatada",
+        "amount": "130 g"
+      },
+      {
+        "name": "agua",
+        "amount": "100 ml"
+      },
+      {
+        "name": "miel cruda o edulcorante favorito",
+        "amount": "1 cucharadita"
+      },
+      {
+        "name": "fresas",
+        "amount": "al gusto"
+      }
+    ],
+    "steps": [
+      "Mezclar bien la leche en polvo desnatada, el agua y la miel (o edulcorante) hasta obtener una textura homogénea.",
+      "Cortar las fresas en trozos pequeños y colocarlas en moldes.",
+      "Verter la mezcla anterior sobre las fresas en los moldes.",
+      "Golpear suavemente los moldes para asentar la mezcla y eliminar burbujas de aire.",
+      "Llevar al congelador durante aproximadamente 3 horas.",
+      "Desmoldar y servir."
+    ],
+    "sourceUrl": "https://vt.tiktok.com/ZS9nw9P5d/"
   }
 ]
