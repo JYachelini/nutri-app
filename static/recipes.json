@@ -844,5 +844,72 @@
       "Agregar atún escurrido y huevo en cuartos.",
       "Condimentar con aceite de oliva y limón."
     ]
+  },
+  {
+    "id": 26,
+    "name": "Ensalada quema grasa con pollo y aguacate",
+    "type": "lunch",
+    "kcal": 420,
+    "protein": 35,
+    "carbs": 20,
+    "fat": 22,
+    "tags": [
+      "rápido",
+      "bajo HC"
+    ],
+    "ingredients": [
+      {
+        "name": "aguacate",
+        "amount": "1 unidad"
+      },
+      {
+        "name": "cebolla morada",
+        "amount": "1/4 unidad"
+      },
+      {
+        "name": "espinaca",
+        "amount": "1 taza"
+      },
+      {
+        "name": "yogur natural sin azúcar",
+        "amount": "2 cucharadas"
+      },
+      {
+        "name": "orégano",
+        "amount": "1/2 cucharadita"
+      },
+      {
+        "name": "sal",
+        "amount": "al gusto"
+      },
+      {
+        "name": "pimienta",
+        "amount": "al gusto"
+      },
+      {
+        "name": "tomate",
+        "amount": "1 unidad"
+      },
+      {
+        "name": "lechuga",
+        "amount": "2 hojas"
+      },
+      {
+        "name": "pasta de garbanzos",
+        "amount": "2 cucharadas"
+      },
+      {
+        "name": "pollo cocido",
+        "amount": "150 g"
+      },
+      {
+        "name": "salsa especial",
+        "amount": "1 cucharada"
+      }
+    ],
+    "steps": [
+      "Colocar el aguacate, la cebolla morada, la espinaca, el yogur, el orégano, la sal y la pimienta en una procesadora y mezclar hasta obtener una crema.",
+      "En un bol grande, combinar el tomate, la lechuga, la pasta de garbanzos, el pollo cocido y la salsa especial. Agregar la crema de aguacate y mezclar todo bien."
+    ]
   }
 ]
