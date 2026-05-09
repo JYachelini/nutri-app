@@ -40,6 +40,17 @@
       </div>
     {/if}
 
+    {#if recipe.sourceUrl}
+      <a
+        href={recipe.sourceUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 text-[12px] text-ink-muted hover:text-ink underline underline-offset-2 mb-5 transition-colors"
+      >
+        🎵 Ver video original
+      </a>
+    {/if}
+
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
       <!-- Ingredients -->
       <div>
